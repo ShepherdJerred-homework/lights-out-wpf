@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lights_out"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Lights Out!" Height="400
+        " Width="350">
     <Grid>
-        
+        <Menu Height="Auto" Width="Auto" VerticalAlignment="Top">
+            <MenuItem Header="Game">
+                <MenuItem Header="N_ew Game" Click="NewGame_OnClick" ToolTip="Start a new game of Lights Out!" />
+                <Separator />
+                <MenuItem Header="E_xit" Click="Exit_OnClick" ToolTip="Exit Lights Out!" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="A_bout" Click="About_OnClick" ToolTip="View information about Lights Out!" />
+            </MenuItem>
+            <MenuItem Header="Grid Size">
+                <MenuItem Header="3" ToolTip="Set grid to size 3" Checked="GridSize_OnChecked" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="5" ToolTip="Set grid to size 4" Checked="GridSize_OnChecked" IsCheckable="True" />
+                <MenuItem Header="7" ToolTip="Set grid to size 5" Checked="GridSize_OnChecked" IsCheckable="True" />
+                <MenuItem Header="10" ToolTip="Set grid to size 50" Checked="GridSize_OnChecked" IsCheckable="True" />
+                <MenuItem Header="50" ToolTip="Set grid to size 50" Checked="GridSize_OnChecked" IsCheckable="True" />
+            </MenuItem>
+        </Menu>
+        <Viewbox Height="Auto" Width="Auto" Margin="10,30,10,10">
+            <Canvas Width="300" Height="300" Name="boardCanvas" />
+        </Viewbox>
     </Grid>
 </Window>

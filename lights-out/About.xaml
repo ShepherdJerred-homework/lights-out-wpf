@@ -1,0 +1,20 @@
+﻿<Window x:Class="lights_out.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lights_out"
+        mc:Ignorable="d"
+        Title="About" Height="200" Width="300">
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" TextWrapping="Wrap" Text="Lights Out!" />
+        <Button DockPanel.Dock="Bottom" Click="Ok_OnClick">
+            <TextBlock TextWrapping="Wrap" Text="OK" />
+        </Button>
+        <TextBlock DockPanel.Dock="Bottom" TextWrapping="Wrap" Text="Created by Jerred Shepherd" />
+        <TextBlock DockPanel.Dock="Right" TextWrapping="Wrap"
+                   Text="Click a square to invert the colors of adjacent boxes, turn all of the boxes black to win!" />
+        <Image DockPanel.Dock="Left" Source="Icon.ico"/>
+    </DockPanel>
+
+</Window>
