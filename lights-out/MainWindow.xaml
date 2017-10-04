@@ -11,15 +11,60 @@
         AllowsTransparency="True"
         WindowStyle="None">
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Jerred\source\repos\lights-out-wpf\lights-out\Background.png">
-        </ImageBrush>
+        <ImageBrush ImageSource="C:\Users\Jerred\source\repos\lights-out-wpf\lights-out\Background.png" />
     </Window.Background>
+    <Window.Resources>
+        <SolidColorBrush x:Key="WhiteBrush" Color="#FFFFFF" />
+        <ControlTemplate x:Key="CustomButton" TargetType="Button">
+            <Border Name="Border" BorderThickness="2"
+                    BorderBrush="#FFFFFF">
+                <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  TextBlock.FontWeight="Bold"
+                                  TextBlock.Foreground="#FFFFFF"
+                                  Content="{TemplateBinding Content}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="ContentPresenter.Opacity" Value="0.5" />
+                    <Setter Property="Border.Opacity" Value="0.5"></Setter>
+                </Trigger>
+                <Trigger Property="Button.ClickMode" Value="Press">
+                    <Setter Property="ContentPresenter.Opacity" Value="1" />
+                    <Setter Property="Border.Opacity" Value="1"></Setter>
+                </Trigger>
+                <Trigger Property="Button.IsEnabled" Value="False">
+                    <Setter Property="Border.Opacity" Value="0"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="NewGame_OnClick" />
+        <CommandBinding Command="Help" Executed="About_OnClick" />
+        <CommandBinding Command="Close" Executed="Exit_OnClick" CanExecute="Exit_CanExecute"/>
+    </Window.CommandBindings>
+
     <Grid MouseLeftButtonDown="DragWindow" Background="Transparent">
         <Viewbox Height="300" Width="300" Margin="10,10,10,10">
-            <Canvas Width="300" Height="300" Name="boardCanvas"/>
+            <Canvas Width="300" Height="300" Name="boardCanvas" />
         </Viewbox>
-        <Button Content="New Game" Margin="50,355,265,10" Width="85px"  Click="NewGame_OnClick"/>
-        <Button Content="?" Margin="175,355,175,10" Width="50px" Click="About_OnClick" />
-        <Button Content="Exit" Margin="265,355,50,10" Width="85px" Click="Exit_OnClick"/>
+        <Button Content="New Game"
+                Margin="50,355,265,10"
+                Width="85px"
+                Template="{StaticResource CustomButton}"
+                Command="New" />
+        <Button Content="?"
+                Margin="175,355,175,10"
+                Width="50px"
+                Template="{StaticResource CustomButton}"
+                Command="Help" />
+        <Button Content="Exit"
+                Margin="265,355,50,10"
+                Width="85px"
+                Template="{StaticResource CustomButton}"
+                Command="Close"/>
     </Grid>
+
 </Window>

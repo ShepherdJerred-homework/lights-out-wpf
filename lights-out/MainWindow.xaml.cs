@@ -72,7 +72,6 @@ namespace lights_out {
         private void CheckWinCondition() {
             if (game.PlayerWon()) {
                 MessageBox.Show("You've Won!");
-                game.NewGame();
             }
         }
 
@@ -102,14 +101,18 @@ namespace lights_out {
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e) {
-            if (game.PlayerWon()) {
                 Close();
-            }
         }
 
         private void About_OnClick(object sender, RoutedEventArgs e) {
             About about = new About();
             about.ShowDialog();
+        }
+
+        private void Exit_CanExecute(object sender, CanExecuteRoutedEventArgs e) {
+            if (game != null) {
+                e.CanExecute = game.PlayerWon();
+            }
         }
 
         private void GridSize_OnChecked(object sender, RoutedEventArgs e) {
@@ -130,7 +133,9 @@ namespace lights_out {
         }
 
         public void DragWindow(object sender, MouseButtonEventArgs args) {
-            DragMove();
+            if (args.ButtonState == MouseButtonState.Pressed) {
+                DragMove();
+            }
         }
     }
 }
