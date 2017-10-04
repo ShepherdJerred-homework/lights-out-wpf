@@ -102,7 +102,9 @@ namespace lights_out {
         }
 
         private void Exit_OnClick(object sender, RoutedEventArgs e) {
-            Close();
+            if (game.PlayerWon()) {
+                Close();
+            }
         }
 
         private void About_OnClick(object sender, RoutedEventArgs e) {
@@ -125,6 +127,10 @@ namespace lights_out {
                     }
                 }
             }
+        }
+
+        public void DragWindow(object sender, MouseButtonEventArgs args) {
+            DragMove();
         }
     }
 }
