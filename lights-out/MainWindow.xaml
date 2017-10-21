@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         WindowStyle="None">
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Jerred\source\repos\lights-out-wpf\lights-out\Background.png" />
+        <ImageBrush ImageSource="Background.png" />
     </Window.Background>
     <Window.Resources>
         <SolidColorBrush x:Key="WhiteBrush" Color="#FFFFFF" />
